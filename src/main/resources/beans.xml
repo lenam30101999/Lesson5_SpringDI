@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:util="http://www.springframework.org/schema/util"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/util https://www.springframework.org/schema/util/spring-util.xsd">
+
+    <!-- Inject by setter -->
+    <bean id="person" class="com.k003.nam.lesson5.demotest.object.Person">
+        <property name="name" value="stackjava.com"></property>
+        <property name="age" value="25"></property>
+        <property name="address" ref="address"></property>
+    </bean>
+
+    <!-- Inject by constructor -->
+    <bean id="person2" class="com.k003.nam.lesson5.demotest.object.Person">
+        <constructor-arg name="name" type="String" value="spring"></constructor-arg>
+        <constructor-arg name="age" type="int" value="30"></constructor-arg>
+        <constructor-arg name="address" ref="address"></constructor-arg>
+    </bean>
+
+    <bean id="address" class="com.k003.nam.lesson5.demotest.object.Address">
+        <property name="country" value="Viet Nam"></property>
+        <property name="province" value="Ha Noi"></property>
+        <property name="district" value="Thanh Xuan"></property>
+    </bean>
+
+    <!--List-->
+    <!-- Inject by constructor -->
+    <bean id="employer1" class="com.k003.nam.lesson5.demotest.object.Employer">
+        <constructor-arg name="name" type="String" value="Nam"></constructor-arg>
+        <constructor-arg name="age" type="int" value="20"></constructor-arg>
+        <constructor-arg name="addresses">
+            <list>
+                <ref bean="address1" />
+                <ref bean="address2" />
+            </list>
+        </constructor-arg>
+        <constructor-arg name="emails">
+            <list>
+                <value>levunam30101999@gmail.com</value>
+                <value>lenam3010@gmail.com</value>
+                <value>lenam19993010@gmail.com</value>
+            </list>
+        </constructor-arg>
+    </bean>
+
+    <!-- Inject by setter -->
+    <bean id="employer2" class="com.k003.nam.lesson5.demotest.object.Employer">
+        <property name="name" value="One"></property>
+        <property name="age" value="25"></property>
+        <property name="addresses">
+            <list>
+                <ref bean="address2" />
+            </list>
+        </property>
+        <property name="emails">
+            <list>
+                <value>one@hotmail.com</value>
+                <value>one1@zzz.com</value>
+            </list>
+        </property>
+    </bean>
+
+    <bean id="address1" class="com.k003.nam.lesson5.demotest.object.Address">
+        <property name="country" value="Viet Nam"></property>
+        <property name="province" value="Ha Noi"></property>
+        <property name="district" value="Thanh Tri"></property>
+    </bean>
+    <bean id="address2" class="com.k003.nam.lesson5.demotest.object.Address">
+        <property name="country" value="Viet Nam"></property>
+        <property name="province" value="Ha Noi"></property>
+        <property name="district" value="Ha Dong"></property>
+    </bean>
+
+    <!--HashSet-->
+    <!-- Inject by constructor -->
+    <bean id="employee" class="com.k003.nam.lesson5.demotest.object.Employee">
+        <constructor-arg name="name" type="String" value="Nam"></constructor-arg>
+        <constructor-arg name="age" type="int" value="20"></constructor-arg>
+        <constructor-arg name="account">
+            <set>
+                <ref bean="account1"/>
+                <ref bean="account2"/>
+            </set>
+        </constructor-arg>
+    </bean>
+
+    <bean id="account1" class="com.k003.nam.lesson5.demotest.object.Account">
+        <property name="username" value="lenam3010"></property>
+        <property name="password" value="nam30101999"></property>
+    </bean>
+    <bean id="account2" class="com.k003.nam.lesson5.demotest.object.Account">
+        <property name="username" value="abcxyz"></property>
+        <property name="password" value="123456"></property>
+    </bean>
+
+    <!--Map-->
+    <bean id="student"  class="com.k003.nam.lesson5.demotest.object.Student">
+        <property name="listStudent">
+            <map>
+                <entry key="20" value="Nam"/>
+                <entry key="25" value="Abc"/>
+                <entry key="28" value="Xyz"/>
+            </map>
+        </property>
+    </bean>
+</beans>
